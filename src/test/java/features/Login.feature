@@ -1,6 +1,6 @@
 Feature: Login feature
 
-  Scenario: User can't login using invalid credentials
+  Scenario: User can't login using invalid credential
     Given User is on the login page
     When User enter username "01757921769"
     And User enter password "......7"
@@ -20,3 +20,15 @@ Feature: Login feature
     And User enter password "hijibiji"
     And User click on login button
     Then User see the message "Incorrect username or password."
+
+  Scenario Outline: User can't login using invalid credentials
+    Given User is on the login page
+    When User enter username <username>
+    And User enter password <password>
+    And User click on login button
+    Then User see the message <error_msg>
+    Examples:
+      | username     | password  | error_msg                           |
+      |"01757921769"|"......7"  |"Incorrect username or password."    |
+      |"017w4587548"|""         |"Please enter a valid phone number." |
+      |"01778681516"|"hijibiji" |"Incorrect username or password."    |

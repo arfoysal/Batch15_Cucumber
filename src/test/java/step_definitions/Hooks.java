@@ -15,6 +15,5 @@ public class Hooks {
     @After
     public void quitBrowser(Scenario scenario){
         BaseDriverSetup.quitBrowser(scenario);
-
     }
 }
